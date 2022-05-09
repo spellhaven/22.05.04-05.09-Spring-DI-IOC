@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- MainClass에서 cal 객체를 myCal에 넣었어야 작동이 됐는데, 그걸 여기서 해 보자.
+	왜냐면 여기서 IOC에서 해야 의존주입이 잘 되니까. -->
+	
+	<bean id = "cal" class = "com.spellhaven.spring_0502_1.Calculator"></bean>
+	
+	<bean id = "myCal" class = "com.spellhaven.spring_0502_1.MyCalculator">
+		<property name="calcu"> <!-- 위에서 만든 cal을 calcu에다 넣겠다는 말이다. -->
+			<ref bean = "cal"/>
+		</property>
+		<property name="a" value = "100"></property>
+		<property name="b" value = "200"></property>
+	</bean>
+
+</beans>
